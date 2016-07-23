@@ -1,9 +1,6 @@
 #This handles checking if a number is prime
 def isprime(n):
-	print("Prime Checker")
-	print("programed by: Isaiah Gayfield")
-	print("Start Date: 7/20/2016")
-	print("Version: 0.0.0")
+
 	'''check if integer n is a prime'''
 
 	# make sure n is a positive integer
@@ -27,4 +24,18 @@ def isprime(n):
 		if n % x == 0:
 			return False
 
-return True
+	return True
+
+# This handles console IO
+while 1:
+	print("Prime Checker")
+	print("programed by: Isaiah Gayfield")
+	print("Start Date: 7/20/2016")
+	print("Version: 0.0.0")
+
+	primeCk = input('Input a number to check for primality and press Enter')
+	if isprime(primeCk) == True:
+		print('%d is prime', primeCk)
+		
+	elif isprime(primeCk) == False:
+		print('%d is not prime', primeCk)
