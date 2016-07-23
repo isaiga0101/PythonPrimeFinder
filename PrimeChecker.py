@@ -27,13 +27,18 @@ def isprime(n):
 	return True
 
 # This handles console IO
-while 1:
-	print("Prime Checker")
-	print("programed by: Isaiah Gayfield")
-	print("Start Date: 7/20/2016")
-	print("Version: 0.0.0")
 
-	primeCk = input('Input a number to check for primality and press Enter')
+print("Prime Checker")
+print("programed by: Isaiah Gayfield")
+print("Start Date: 7/20/2016")
+print("Version: 0.0.0")
+
+while 1:
+	#Initialize variable if there is no input.
+	primeCk = 0
+	
+	print("Input a number to check for primality and press Enter")
+	primeCk = input(">> ")
 	if isprime(primeCk) == True:
 		print('%d is prime', primeCk)
 		
