@@ -1,10 +1,21 @@
-#This handles checking if a number is prime
-def isprime(n):
+import sys
 
+# Calculates a percentage 
+def percent(num,total):
+	holder = num/total
+	holder = holder * 100
+	return holder
+	
+#This handles checking if a number is prime	
+def isprime(n):
+	progress = 0
+	TempPr = 0
+	printprogress = 0
 	'''check if integer n is a prime'''
 
 	# make sure n is a positive integer
 	n = abs(int(n))
+	print ("Initializing")
 
 	# 0 and 1 are not primes
 	if n < 2:
@@ -20,10 +31,16 @@ def isprime(n):
 
 	# range starts with 3 and only needs to go up 
 	# the square root of n for all odd numbers
+	print("0")
 	for x in range(3, int(n**0.5) + 1, 2):
 		if n % x == 0:
 			return False
-
+			
+		progress = percent(x,int(n**0.5))
+		if progress >= TempPr + 1:
+			printprogress = printprogress + 1
+			print(printprogress) 
+			TempPr = TempPr + 1
 	return True
 
 # This handles console IO
@@ -37,10 +54,18 @@ while 1:
 	#Initialize variable if there is no input.
 	primeCk = 0
 	
-	print("Input a number to check for primality and press Enter")
+	print("Input a number to check for primality and press \"Enter\" Enter \"Exit\" to exit.")
 	primeCk = input(">> ")
-	if isprime(primeCk) == True:
-		print('%d is prime', primeCk)
+	
+	if primeCk == "exit":
+		sys.exit()
+	elif primeCk == "Exit":
+		sys.exit()
+	
+	primeCk = int(primeCk)
+	primebool = isprime(primeCk)
+	if primebool == True:
+		print(primeCk,'is prime')
 		
-	elif isprime(primeCk) == False:
-		print('%d is not prime', primeCk)
+	elif primebool == False:
+		print(primeCk,'is not prime')
