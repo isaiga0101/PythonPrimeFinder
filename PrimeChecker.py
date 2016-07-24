@@ -31,7 +31,7 @@ def isprime(n):
 
 	# range starts with 3 and only needs to go up 
 	# the square root of n for all odd numbers
-	print("0")
+	print("0 %")
 	for x in range(3, int(n**0.5) + 1, 2):
 		if n % x == 0:
 			return False
@@ -39,7 +39,8 @@ def isprime(n):
 		progress = percent(x,int(n**0.5))
 		if progress >= TempPr + 1:
 			printprogress = printprogress + 1
-			print(printprogress) 
+			sys.stdout.write('\r'+b)
+			print(printprogress, '%') 
 			TempPr = TempPr + 1
 	return True
 
