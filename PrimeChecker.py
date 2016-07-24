@@ -49,7 +49,7 @@ def isprime(n):
 print("Prime Checker")
 print("programed by: Isaiah Gayfield")
 print("Start Date: 7/20/2016")
-print("Version: 0.0.0")
+print("Version: 0.1.0")
 
 while 1:
 	#Initialize variable if there is no input.
