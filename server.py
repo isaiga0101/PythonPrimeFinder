@@ -23,16 +23,25 @@ class client_thread(threading.Thread):
                 
                 print('Connection closed to client'+ str(self.Address))
                 self.threadSocket.close()
-	
-mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-mySocket.bind(('', 0))
-print ('Server is at: '+ socket.gethostname()+ ':' + str(mySocket.getsockname()[1]))
-	
-mySocket.listen(5)
-while 1:
-	#accept connections from outside
-	(clientsocket, address) = mySocket.accept()
-	#now do something with the clientsocket
-	#in this case, we'll pretend this is a threaded server
-	ct = client_thread(clientsocket,address)
-	ct.start()
+# Main
+acceptclient = True
+check = int(input('Prime to check: '))
+print('Do you want to check this with multiple computers connected wirelessly?')
+print('This is only recomended for large numbers, the default answer is no.')
+multiple = input('(y,N) :')
+
+if multiple == y:
+        mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        mySocket.bind(('', 0))
+        print ('Server is at: '+ socket.gethostname()+ ':' + str(mySocket.getsockname()[1]))
+                
+        mySocket.listen(5)
+        while acceptcleint == True:
+                #accept connections from outside
+                (clientsocket, address) = mySocket.accept()
+                #Start a thead for the client socket
+                ct = client_thread(clientsocket,address)
+                ct.start()
+
+else:
+        
