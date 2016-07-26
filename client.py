@@ -12,7 +12,8 @@ def Main():
 	while message != 'q':
 		mySocket.send(message.encode())
 		data = mySocket.recv(1024).decode()
-		
+		if not data:
+                        break
 		print ('Received from server: ' + data)
 		
 		message = input("Message: ")
