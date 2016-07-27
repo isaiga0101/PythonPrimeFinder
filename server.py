@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import socket
 import time
 import threading
@@ -154,15 +156,15 @@ while True:
         high = 0
         count = 0
 
-        check = input('Enter \'Exit\' to exit, otherwise input number: ')
+        check = raw_input('Enter \'Exit\' to exit, otherwise input number: ')
         if check.upper() == 'EXIT':
                 break
         print('Do you want to check this with multiple computers connected wirelessly?')
         print('This is only recomended for large numbers, the default answer is no.')
-        multiple = input('(y,N) :')
+        multiple = raw_input('(y,N) :')
 
         if multiple == 'y':
-                num = int(input('How many clients will be computing the number?: '))
+                num = int(raw_input('How many clients will be computing the number?: '))
                 high = int(check)**0.5 / num
                 if round(high,0) > high:
                         high = round(high, 0)
@@ -187,8 +189,8 @@ while True:
                         else:
                                 low = low + add
                                 high = high + add
-                print('All clients have connected.')
                 wait = True
+                print('All clients have connected.')
                 while wait == True:
                         wait = True
                 while True:
