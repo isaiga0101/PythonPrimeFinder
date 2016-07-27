@@ -7,7 +7,7 @@ def percent(num,total):
 	return holder
 
 #This handles checking if a number is prime
-def isprime(n,low,top):
+def isprime(n,top,low):
 	progress = 0
 	TempPr = 0
 	printprogress = 0
@@ -28,6 +28,8 @@ def isprime(n,low,top):
 	# all other even numbers are not primes
 	if not n & 1:
 		return False
+	if not low:
+		low = 3
 
 	# range starts with 3 and only needs to go up
 	# the square root of n for all odd numbers
@@ -44,40 +46,39 @@ def isprime(n,low,top):
 	return True
 
 
-def Main():
-	count = 1
-	host = input('Host: ')
-	port = int(input('Port: '))
-	print('Connecting to: '+host+':'+str(port))
-	mySocket = socket.socket()
-	mySocket.connect((host,port))
-		
-	message = 'receive number'
-		
-	while count <= 3:
-		mySocket.send(message.encode())
-		data = mySocket.recv(1024).decode()
-		if not data:
-			break
-		print ('Received from server: ' + data)
-		if count == 1:
-			num = int(data)
-			message = 'receive top'
-			count = count + 1
-		if count == 2:
-			top = int(data)
-			message = 'receive low'
-			count = count + 1
-		if count == 3:
-			low = int(data)
-			count = count + 1
+# Main
+count = 1
+host = input('Host: ')
+port = int(input('Port: '))
+print('Connecting to: '+host+':'+str(port))
+mySocket = socket.socket()
+mySocket.connect((host,port))
+	
+message = 'receive number'
+	
+while count <= 3:
+	mySocket.send(message.encode())
+	data = mySocket.recv(1024).decode()
+	if not data:
+		break
+	if count == 1:
+		num = int(float(data)) - 1
+		message = 'receive top'
+		print('Number: '+str(num))
+		count = count + 1
+	elif count == 2:
+		top = int(float(data))
+		message = 'receive low'
+		print('Top: '+str(top))
+		count = count + 1
+	elif count == 3:
+		low = int(float(data))
+		print('Low: '+str(low))
+		count = count + 1
 
-	primenum = isprime(num,top,low)
-	if primenum == True:
-		mySocket.send('True'.encode())
-	else:
-		mySocket.send('False'.encode())
-	mySocket.close()
- 
-if __name__ == '__main__':
-	Main()
+primenum = isprime(num,top,low)
+if primenum == True:
+	mySocket.send('True'.encode())
+else:
+	mySocket.send('False'.encode())
+mySocket.close()
