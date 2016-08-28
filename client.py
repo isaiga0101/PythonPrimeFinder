@@ -31,8 +31,7 @@ def isprime(n,top,low):
 	if not low:
 		low = 3
 
-	# range starts with 3 and only needs to go up
-	# the square root of n for all odd numbers
+	# goes up by odd numbers
 	print("0 %")
 	for x in range(low, top, 2):
 		if n % x == 0:
@@ -78,7 +77,9 @@ while count <= 3:
 
 primenum = isprime(num,top,low)
 if primenum == True:
+	print("Sending True");
 	mySocket.send('True'.encode())
 else:
+	print("Sending False");
 	mySocket.send('False'.encode())
 mySocket.close()

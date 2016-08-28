@@ -156,15 +156,15 @@ while True:
         high = 0
         count = 0
 
-        check = raw_input('Enter \'Exit\' to exit, otherwise input number: ')
+        check = input('Enter \'Exit\' to exit, otherwise input number: ')
         if check.upper() == 'EXIT':
                 break
         print('Do you want to check this with multiple computers connected wirelessly?')
         print('This is only recomended for large numbers, the default answer is no.')
-        multiple = raw_input('(y,N) :')
+        multiple = input('(y,N) :')
 
         if multiple == 'y':
-                num = int(raw_input('How many clients will be computing the number?: '))
+                num = int(input('How many clients will be computing the number?: '))
                 high = int(check)**0.5 / num
                 if round(high,0) > high:
                         high = round(high, 0)
@@ -193,8 +193,6 @@ while True:
                 print('All clients have connected.')
                 while wait == True:
                         wait = True
-                while True:
-                        break
                         
         else:
                 # This handles console IO
@@ -203,6 +201,5 @@ while True:
                 primebool = isprime(primeCk)
                 if primebool == True:
                         print(primeCk,'is prime')
-
-                elif primebool == False:
+                else:
                         print(primeCk,'is not prime')
