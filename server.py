@@ -5,9 +5,6 @@ import time
 import threading
 import sys
 
-clientCk = 0
-clientDone = 0
-
 # Calculates a percentage
 def percent(num,total):
 	holder = num/total
@@ -62,8 +59,8 @@ class client_thread(threading.Thread):
                 self.num = num
 
         def run(self):
-                global clientCk
-                global clientDone
+                clientCk = 0
+                clientDone = 0
                 errorCnt = 0
                 print('New thread created for connection to ' + str(self.Address))
                 while True:
